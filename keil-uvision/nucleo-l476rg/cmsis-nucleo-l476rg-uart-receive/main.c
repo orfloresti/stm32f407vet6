@@ -34,21 +34,21 @@ void USART2_Init(void)
 	RCC->AHB2ENR |= 1;
 	
 	// Configure PA3  as USART2 RX
-	GPIOA->AFR[0] |= 0x0700;		// Alt7 for USART2
+	GPIOA->AFR[0] |= 0x07000;		// Alt7 for USART2
 	GPIOA->MODER |= 0x0080;			// Enable Alternate funciton at PA3
 	
 	// USART2->BRR = 0x0022; // 115200 baudrate @3,964,800hz
 	USART2->BRR = 0x19D;
 	
-	USART2->CR1 = 0x0004; // Enable Rx
+	USART2->CR1 |= ( 1 << 2 ); // Enable Rx
 	// USART2->CR1 |= 0x2000; 	
-	USART2->CR1 |= 1; // enable UART
+	USART2->CR1 |= ( 1 << 0 ); // enable UART
 	
 }
 
 char USART2_read(void)
 {
-	while( !( USART2->ISR & 0x0020 )) {} //Wait until char arrives
+	while( !( USART2->ISR & (1 << 5) )) {} //Wait until char arrives
 	// LED_play(5);
 	return USART2->RDR;
 }

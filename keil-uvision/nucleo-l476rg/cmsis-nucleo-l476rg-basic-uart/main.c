@@ -19,8 +19,6 @@ void USART_write(int ch);
 void delayMs(int delay);
 
 int main(void){
-	// RCC
-	RCC->CR |= (1 << 8);
 	
 	USART2_Init();
 
@@ -46,8 +44,10 @@ void USART2_Init(void){
 	GPIOA->MODER |= 0x0020; // set PA2 to alternate function
 	// initiatilzati usart2
 	// USART2->BRR = 0x0683; //9600 @16MHZ
-	// USART_BRR = [BUS_FREQUENCY_in_Hz] / [BOUD_RATE]
-	// USART_BRR = 3,964,800 / 9600 =  413 to hex 0x19D
+		/* 
+	* USART_BRR = [BUS_FREQUENCY_in_Hz] / [BOUD_RATE]
+	* USART_BRR = 3,964,800 / 9600 =  413 to hex 0x19D 
+	*/
 	USART2->BRR = 0x19D;
 	
 	USART2->CR1 = 0x0008; // enable Tx
