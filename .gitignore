@@ -13,6 +13,7 @@
 *.axf
 *.htm
 
-# Paths
-.metadata/
-RemoteSystemsTempFiles/
+# STM32CubeIDE config paths
+**/.metadata/
+**/.settings/
+**/RemoteSystemsTempFiles/

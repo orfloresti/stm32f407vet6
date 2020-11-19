@@ -27,34 +27,34 @@ endif
 
 -include ../makefile.defs
 
-BUILD_ARTIFACT_NAME := 001HelloWorld
+BUILD_ARTIFACT_NAME := bm-nucleo-l476rg-printf
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-001HelloWorld.elf \
+bm-nucleo-l476rg-printf.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-001HelloWorld.list \
+bm-nucleo-l476rg-printf.list \
 
 OBJCOPY_BIN += \
-001HelloWorld.bin \
+bm-nucleo-l476rg-printf.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 001HelloWorld.elf secondary-outputs
+main-build: bm-nucleo-l476rg-printf.elf secondary-outputs
 
 # Tool invocations
-001HelloWorld.elf: $(OBJS) $(USER_OBJS) D:\STM32Projects\bm-nucleo-l476rg\001HelloWorld\STM32L476RGTX_FLASH.ld
-	arm-none-eabi-gcc -o "001HelloWorld.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32Projects\bm-nucleo-l476rg\001HelloWorld\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="001HelloWorld.map" -Wl,--gc-sections -static -specs=rdimon.specs -lc -lrdimon --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+bm-nucleo-l476rg-printf.elf: $(OBJS) $(USER_OBJS) D:\ARMProjetcs\src\stm32cubeide\nucleo-l476rg\bm-nucleo-l476rg-printf\STM32L476RGTX_FLASH.ld
+	arm-none-eabi-gcc -o "bm-nucleo-l476rg-printf.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\ARMProjetcs\src\stm32cubeide\nucleo-l476rg\bm-nucleo-l476rg-printf\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="bm-nucleo-l476rg-printf.map" -Wl,--gc-sections -static -specs=rdimon.specs -lc -lrdimon --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -63,13 +63,13 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-001HelloWorld.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "001HelloWorld.list"
+bm-nucleo-l476rg-printf.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "bm-nucleo-l476rg-printf.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-001HelloWorld.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "001HelloWorld.bin"
+bm-nucleo-l476rg-printf.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "bm-nucleo-l476rg-printf.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
