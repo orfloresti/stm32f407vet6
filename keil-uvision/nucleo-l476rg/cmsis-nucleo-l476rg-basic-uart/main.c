@@ -19,6 +19,9 @@ void USART_write(int ch);
 void delayMs(int delay);
 
 int main(void){
+	// RCC
+	RCC->CR |= (1 << 8);
+	
 	USART2_Init();
 
 	while(1){
