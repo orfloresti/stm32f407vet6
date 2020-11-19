@@ -1,0 +1,18 @@
+# Debug files
+
+*.bin
+*.elf
+*.list
+*.map
+*.mk
+*.d
+*.o
+*.su
+*.crf
+*.Inp
+*.axf
+*.htm
+
+# Paths
+.metadata/
+RemoteSystemsTempFiles/
