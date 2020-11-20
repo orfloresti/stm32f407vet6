@@ -37,8 +37,8 @@ void USART2_Init(void)
 	GPIOA->AFR[0] |= 0x07000;		// Alt7 for USART2
 	GPIOA->MODER |= 0x0080;			// Enable Alternate funciton at PA3
 	
-	// USART2->BRR = 0x0022; // 115200 baudrate @3,964,800hz
-	USART2->BRR = 0x19D;
+	USART2->BRR = 0x0022; // 115200 baudrate @3,964,800hz
+	// USART2->BRR = 0x19D; // 9600 baudrate @3,964,800hz
 	
 	USART2->CR1 |= ( 1 << 2 ); // Enable Rx
 	// USART2->CR1 |= 0x2000; 	

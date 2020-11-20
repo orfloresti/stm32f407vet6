@@ -24,13 +24,13 @@ int main(void){
 
 	while(1){
 		USART_write('h');
-		delayMs(1000);
+		delayMs(100);
 		USART_write('i');
-		delayMs(1000);
+		delayMs(100);
 		USART_write('\r');
-		delayMs(1000);
+		delayMs(100);
 		USART_write('\n');
-		delayMs(1000);
+		delayMs(100);
 	}
 }
 
@@ -43,12 +43,13 @@ void USART2_Init(void){
 	//GPIOA->MODER = 0;
 	GPIOA->MODER |= 0x0020; // set PA2 to alternate function
 	// initiatilzati usart2
-	// USART2->BRR = 0x0683; //9600 @16MHZ
-		/* 
+	/* 
 	* USART_BRR = [BUS_FREQUENCY_in_Hz] / [BOUD_RATE]
 	* USART_BRR = 3,964,800 / 9600 =  413 to hex 0x19D 
 	*/
-	USART2->BRR = 0x19D;
+	// USART2->BRR = 0x0683; //9600 @16MHZ
+	USART2->BRR = 0x19D; //9600 @4MHZ
+	// USART2->BRR = 0x23; //115200 @4MHZ
 	
 	USART2->CR1 = 0x0008; // enable Tx
 	USART2->CR1 |= 1; // enable UART

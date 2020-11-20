@@ -7,3 +7,6 @@ In this repo I will share the code I have used to learn about ARM cortex M0, M3,
 - Code Composer Studio
 - Keil uVision
 
+# Documentation
+- Reference manual
+- Datasheet
