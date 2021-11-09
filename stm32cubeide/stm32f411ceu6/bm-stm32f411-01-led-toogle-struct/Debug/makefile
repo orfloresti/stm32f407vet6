@@ -9,9 +9,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
--include Core/Startup/subdir.mk
--include Core/Src/subdir.mk
+-include Startup/subdir.mk
+-include Src/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -35,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := hal-stm32f411ceu6-blink
+BUILD_ARTIFACT_NAME := bm-stm32f411-01-led-toogle-struct
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-hal-stm32f411ceu6-blink.elf \
+bm-stm32f411-01-led-toogle-struct.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-hal-stm32f411ceu6-blink.list \
+bm-stm32f411-01-led-toogle-struct.list \
 
 OBJCOPY_BIN += \
-hal-stm32f411ceu6-blink.bin \
+bm-stm32f411-01-led-toogle-struct.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: hal-stm32f411ceu6-blink.elf secondary-outputs
+main-build: bm-stm32f411-01-led-toogle-struct.elf secondary-outputs
 
 # Tool invocations
-hal-stm32f411ceu6-blink.elf: $(OBJS) $(USER_OBJS) /home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/hal-stm32f411ceu6-blink/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "hal-stm32f411ceu6-blink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/hal-stm32f411ceu6-blink/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="hal-stm32f411ceu6-blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+bm-stm32f411-01-led-toogle-struct.elf: $(OBJS) $(USER_OBJS) /home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/bm-stm32f411-01-led-toogle-struct/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "bm-stm32f411-01-led-toogle-struct.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/bm-stm32f411-01-led-toogle-struct/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="bm-stm32f411-01-led-toogle-struct.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -71,19 +70,19 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-hal-stm32f411ceu6-blink.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "hal-stm32f411ceu6-blink.list"
+bm-stm32f411-01-led-toogle-struct.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "bm-stm32f411-01-led-toogle-struct.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-hal-stm32f411ceu6-blink.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "hal-stm32f411ceu6-blink.bin"
+bm-stm32f411-01-led-toogle-struct.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "bm-stm32f411-01-led-toogle-struct.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) hal-stm32f411ceu6-blink.elf
+	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) bm-stm32f411-01-led-toogle-struct.elf
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
