@@ -9,9 +9,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include Drivers/STM32L4xx_HAL_Driver/Src/subdir.mk
--include Core/Startup/subdir.mk
--include Core/Src/subdir.mk
+-include Startup/subdir.mk
+-include Src/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -35,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := cmsis-nucleo-l476rg-blink
+BUILD_ARTIFACT_NAME := cmsis-stm32f411-03-gpio-bsrr
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-cmsis-nucleo-l476rg-blink.elf \
+cmsis-stm32f411-03-gpio-bsrr.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-cmsis-nucleo-l476rg-blink.list \
+cmsis-stm32f411-03-gpio-bsrr.list \
 
 OBJCOPY_BIN += \
-cmsis-nucleo-l476rg-blink.bin \
+cmsis-stm32f411-03-gpio-bsrr.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: cmsis-nucleo-l476rg-blink.elf secondary-outputs
+main-build: cmsis-stm32f411-03-gpio-bsrr.elf secondary-outputs
 
 # Tool invocations
-cmsis-nucleo-l476rg-blink.elf: $(OBJS) $(USER_OBJS) D:\ARMProjetcs\CodeSources\stm32cubeide\nucleo-l476rg\cmsis-nucleo-l476rg-blink\STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "cmsis-nucleo-l476rg-blink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\ARMProjetcs\CodeSources\stm32cubeide\nucleo-l476rg\cmsis-nucleo-l476rg-blink\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmsis-nucleo-l476rg-blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+cmsis-stm32f411-03-gpio-bsrr.elf: $(OBJS) $(USER_OBJS) D:\ARMProjetcs\CodeSources\stm32cubeide\stm32f411ceu6\cmsis-stm32f411-03-gpio-bsrr\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "cmsis-stm32f411-03-gpio-bsrr.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\ARMProjetcs\CodeSources\stm32cubeide\stm32f411ceu6\cmsis-stm32f411-03-gpio-bsrr\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmsis-stm32f411-03-gpio-bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -71,13 +70,13 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cmsis-nucleo-l476rg-blink.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "cmsis-nucleo-l476rg-blink.list"
+cmsis-stm32f411-03-gpio-bsrr.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "cmsis-stm32f411-03-gpio-bsrr.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cmsis-nucleo-l476rg-blink.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "cmsis-nucleo-l476rg-blink.bin"
+cmsis-stm32f411-03-gpio-bsrr.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "cmsis-stm32f411-03-gpio-bsrr.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
