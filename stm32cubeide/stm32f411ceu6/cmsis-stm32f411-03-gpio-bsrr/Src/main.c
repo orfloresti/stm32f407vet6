@@ -35,11 +35,11 @@ int main(void) {
 		// Toggle PINC13
 		GPIOC->BSRR = LED_PINC;
 		// Generic delay
-		for(int i=0; i<100000; i++){}
+		for(int i=0; i<200000; i++){}
 
 		// Toggle PINC13
 		GPIOC->BSRR = (1U<<29);
 		// Generic delay
-		for(int i=0; i<100000; i++){}
+		for(int i=0; i<200000; i++){}
 	}
 }

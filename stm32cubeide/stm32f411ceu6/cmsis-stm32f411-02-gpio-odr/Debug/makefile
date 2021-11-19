@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := cmsis-stm32f411-02-gpio-output
+BUILD_ARTIFACT_NAME := cmsis-stm32f411-02-gpio-odr
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-cmsis-stm32f411-02-gpio-output.elf \
+cmsis-stm32f411-02-gpio-odr.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-cmsis-stm32f411-02-gpio-output.list \
+cmsis-stm32f411-02-gpio-odr.list \
 
 OBJCOPY_BIN += \
-cmsis-stm32f411-02-gpio-output.bin \
+cmsis-stm32f411-02-gpio-odr.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: cmsis-stm32f411-02-gpio-output.elf secondary-outputs
+main-build: cmsis-stm32f411-02-gpio-odr.elf secondary-outputs
 
 # Tool invocations
-cmsis-stm32f411-02-gpio-output.elf: $(OBJS) $(USER_OBJS) /home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/bm-stm32f411-02-gpio-output/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "cmsis-stm32f411-02-gpio-output.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/bm-stm32f411-02-gpio-output/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmsis-stm32f411-02-gpio-output.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+cmsis-stm32f411-02-gpio-odr.elf: $(OBJS) $(USER_OBJS) /home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/cmsis-stm32f411-02-gpio-odr/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "cmsis-stm32f411-02-gpio-odr.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/cmsis-stm32f411-02-gpio-odr/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmsis-stm32f411-02-gpio-odr.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,19 +70,19 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cmsis-stm32f411-02-gpio-output.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "cmsis-stm32f411-02-gpio-output.list"
+cmsis-stm32f411-02-gpio-odr.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "cmsis-stm32f411-02-gpio-odr.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cmsis-stm32f411-02-gpio-output.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "cmsis-stm32f411-02-gpio-output.bin"
+cmsis-stm32f411-02-gpio-odr.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "cmsis-stm32f411-02-gpio-odr.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) cmsis-stm32f411-02-gpio-output.elf
+	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) cmsis-stm32f411-02-gpio-odr.elf
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)

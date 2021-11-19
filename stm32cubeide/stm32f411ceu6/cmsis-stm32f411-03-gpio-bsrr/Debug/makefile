@@ -36,8 +36,8 @@ $(wildcard ../makefile.targets) \
 
 BUILD_ARTIFACT_NAME := cmsis-stm32f411-03-gpio-bsrr
 BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX := 
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
+BUILD_ARTIFACT_PREFIX :=
+BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
@@ -60,8 +60,8 @@ all: main-build
 main-build: cmsis-stm32f411-03-gpio-bsrr.elf secondary-outputs
 
 # Tool invocations
-cmsis-stm32f411-03-gpio-bsrr.elf: $(OBJS) $(USER_OBJS) D:\ARMProjetcs\CodeSources\stm32cubeide\stm32f411ceu6\cmsis-stm32f411-03-gpio-bsrr\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "cmsis-stm32f411-03-gpio-bsrr.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\ARMProjetcs\CodeSources\stm32cubeide\stm32f411ceu6\cmsis-stm32f411-03-gpio-bsrr\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmsis-stm32f411-03-gpio-bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+cmsis-stm32f411-03-gpio-bsrr.elf: $(OBJS) $(USER_OBJS) /home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/cmsis-stm32f411-03-gpio-bsrr/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "cmsis-stm32f411-03-gpio-bsrr.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/orlando_floresti/ARMProjects/SourceCode/stm32cubeide/stm32f411ceu6/cmsis-stm32f411-03-gpio-bsrr/STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cmsis-stm32f411-03-gpio-bsrr.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -82,7 +82,7 @@ cmsis-stm32f411-03-gpio-bsrr.bin: $(EXECUTABLES) makefile objects.list $(OPTIONA
 
 # Other Targets
 clean:
-	-$(RM) *
+	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) cmsis-stm32f411-03-gpio-bsrr.elf
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
@@ -95,6 +95,5 @@ warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
 .PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
-.SECONDARY:
 
 -include ../makefile.targets

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>cmsis-stm32f411-02-gpio-output</name>
+	<name>cmsis-stm32f411-02-gpio-odr</name>
 	<comment></comment>
 	<projects>
 	</projects>
