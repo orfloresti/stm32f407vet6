@@ -15,41 +15,35 @@
 #define PINA5					(1U<<5)
 #define LED_PIN					PINA5
 
-
 #define __IO  volatile
 
-typedef struct
-{
-  volatile uint32_t DUMMY[12];
-  volatile uint32_t AHB1ENR;       /*!< RCC AHB1 peripheral clock register,                          Address offset: 0x30 */
+typedef struct {
+	volatile uint32_t DUMMY[12];
+	volatile uint32_t AHB1ENR; /*!< RCC AHB1 peripheral clock register,                          Address offset: 0x30 */
 } RCC_TypeDef;
 
-typedef struct
-{
-	volatile uint32_t MODER;    /*!< GPIO port mode register,               Address offset: 0x00      */
+typedef struct {
+	volatile uint32_t MODER; /*!< GPIO port mode register,               Address offset: 0x00      */
 	volatile uint32_t DUMMY[4];
-	volatile uint32_t ODR;      /*!< GPIO port output data register,        Address offset: 0x14      */
+	volatile uint32_t ODR; /*!< GPIO port output data register,        Address offset: 0x14      */
 } GPIO_TypeDef;
 
 #define RCC		    ((RCC_TypeDef*) RCC_BASE)
 #define GPIOA		((GPIO_TypeDef*)GPIOA_BASE)
 
-int main(void)
-{
+int main(void) {
 	/*1. Enable clock access to GPIOA*/
-	 RCC->AHB1ENR |=  GPIOAEN;
+	RCC->AHB1ENR |= GPIOAEN;
 
 	/*2.Set PA5 as output pin*/
-	 GPIOA->MODER |= (1U<<10);  // Set bit 10 to 1
-	 GPIOA->MODER &=~(1U<<11); //  Set bit 11 to 0
+	GPIOA->MODER |= (1U << 10);  // Set bit 10 to 1
+	GPIOA->MODER &= ~(1U << 11); //  Set bit 11 to 0
 
-	while(1)
-	{
-		GPIOA->ODR^= LED_PIN;
+	while (1) {
+		GPIOA->ODR ^= LED_PIN;
 		// GPIOC->ODR^= LED_DEMO;
-		for(int i=0;i<100000;i++){}
+		for (int i = 0; i < 100000; i++) {
+		}
 	}
 }
-
-
 
