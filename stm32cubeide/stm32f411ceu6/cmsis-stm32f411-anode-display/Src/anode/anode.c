@@ -11,22 +11,18 @@
 #define GPIOAEN		(1U<<0)
 
 void anodeInitPort(){
-
 	// Enable clock for GPIOC
 	RCC->AHB1ENR |= GPIOAEN;
-
 	// Mode GPIOA 0-15 as general output
 	GPIOA->MODER |= (0x555555U << 0);
 }
 
 // Set a number in the display
-void setDisplay(int number, int display) {
-
+void setDisplay(int unit, int display) {
 	// Clean port
 	GPIOA->ODR = (0xfffU << 0);
-
 	// Set number in display
-	switch(number){
+	switch(unit){
 	case 0:
 		// Set 0
 		GPIOA->ODR = ~(0x3fU << 0);
@@ -72,16 +68,39 @@ void setDisplay(int number, int display) {
 	// Enable display
 	switch(display){
 	case 1:
+		// Enable display 1
 		GPIOA->BSRR = (1U << 24);
 		break;
 	case 2:
+		// Enable display 2
 		GPIOA->BSRR = (1U << 25);
 		break;
 	case 3:
+		// Enable display 3
 		GPIOA->BSRR = (1u << 26);
 		break;
 	case 4:
+		// Enable display 4
 		GPIOA->BSRR = (1U << 27);
 		break;
 	}
 }
+
+void displayPrint(int number) {
+	int numberArray[4];
+
+    numberArray[0] = number / 1000;
+    numberArray[1] = (number - numberArray[0]*1000) / 100;
+    numberArray[2] = (number - (numberArray[0]*1000 + numberArray[1]*100)) / 10;
+    numberArray[3] = (number - (numberArray[0]*1000 + numberArray[1]*100 + numberArray[2]*10));
+
+    for(int i = 0; i < 4; i++) {
+    	setDisplay(numberArray[i], i+1);
+    }
+}
+
+
+
+
+
+

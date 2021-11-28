@@ -2,7 +2,7 @@
 #define ANODE_H
 
 void anodeInitPort();
-void setDisplay(int number, int display);
-
+void setDisplay(int unit, int display);
+void displayPrint(int number);
 #endif
 
