@@ -28,7 +28,7 @@ int main(void){
 
 void systickDelayMs( int ms ) {
 	
-	// Clock seems to be 2000Mhz
+	// Clock seems to be 2Mhz
 	SysTick->LOAD = 8000; // Reload with number of clocks per milliseconds
 	SysTick->VAL = 0;		// Cleat current value
 	SysTick->CTRL = 5; 	// Enable Systick
