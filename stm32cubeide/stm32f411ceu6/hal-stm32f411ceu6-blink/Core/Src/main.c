@@ -57,6 +57,8 @@ static void MX_GPIO_Init(void);
 
 /* USER CODE END 0 */
 
+uint32_t freq;
+
 /**
   * @brief  The application entry point.
   * @retval int
@@ -80,6 +82,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  freq = HAL_RCC_GetHCLKFreq();
 
   /* USER CODE END SysInit */
 
@@ -95,6 +98,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
