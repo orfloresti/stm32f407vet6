@@ -12,6 +12,7 @@
 *.Inp
 *.axf
 *.htm
+*.hex
 
 # Eclipse paths
 **/.metadata/
@@ -21,3 +22,4 @@
 
 **/RemoteSystemsTempFiles/
 **/dvt/
+**/build/

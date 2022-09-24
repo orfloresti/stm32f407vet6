@@ -1,12 +1,16 @@
-# ARM Projects
+# Microcontrollers examples
 
-In this repo I will share the code I have used to learn about ARM cortex M0, M3, M4, M7 from Texas Instruments and STMicroelectronics.
+This repo has examples for uC 
+- ARM cortex M0, M3, M4, M7 from Texas Instruments and STMicroelectronics.
+- PIC 16, 18f
+- AVR 
+- ESP8266, ESP32
 
 ## Tools
 - STM32CubeIDE
 - Code Composer Studio
 - Keil uVision
-
-# Documentation
-- Reference manual
-- Datasheet
+- MPLABX
+- ATMEGAStudio
+- Espressif IDE
+- Eclipse CDT
