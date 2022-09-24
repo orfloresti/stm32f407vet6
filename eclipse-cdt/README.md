@@ -16,3 +16,16 @@
 boud rate for monitor 74880
 
 
+## NOTE: Before compiling validate minimum files path
+${PWD} .
+│   CMakeLists.txt
+│   Makefile
+│   README.md
+│
+└───main
+        CMakeLists.txt
+        component.mk
+        hello_world_main.c
+
+
+
