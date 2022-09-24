@@ -13,11 +13,11 @@
 *.axf
 *.htm
 
-# Eclipse paths
+# STM32CubeIDE config paths
 **/.metadata/
 **/.settings/
-**/.jxbrowser.userdata/
-**/.launches/
-
 **/RemoteSystemsTempFiles/
+**/.jxbrowser.userdata/
 **/dvt/
+**/.launches/
+**/.settings/
